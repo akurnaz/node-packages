@@ -1,5 +1,5 @@
 {
-  "name": "my_cloud_firestore",
+  "name": "my-cloud-firestore",
   "version": "1.0.0",
   "description": "",
   "main": "lib/index.js",
@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/akurnaz/node-packages/issues"
   },
-  "homepage": "https://github.com/akurnaz/node-packages/tree/main/my_cloud_firestore#readme",
+  "homepage": "https://github.com/akurnaz/node-packages/tree/main/my-cloud-firestore#readme",
   "engines": {
     "node": ">=18"
   },
