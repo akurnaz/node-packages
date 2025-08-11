@@ -1,5 +1,6 @@
 {
   "workspaces": [
-    "commons"
+    "commons", 
+    "my-cloud-firestore"
   ]
 }
