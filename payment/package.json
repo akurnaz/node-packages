@@ -1,5 +1,5 @@
 {
-  "name": "commons",
+  "name": "payment",
   "version": "1.0.0",
   "description": "",
   "main": "lib/index.js",
@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/akurnaz/node-packages/issues"
   },
-  "homepage": "https://github.com/akurnaz/node-packages/tree/main/commons#readme",
+  "homepage": "https://github.com/akurnaz/node-packages/tree/main/payment#readme",
   "engines": {
     "node": ">=18"
   },
