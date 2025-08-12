@@ -2,6 +2,7 @@
   "workspaces": [
     "commons", 
     "my-cloud-firestore",
-    "payment"
+    "payment",
+    "validation"
   ]
 }
