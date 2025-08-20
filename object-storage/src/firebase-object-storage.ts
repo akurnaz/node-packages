@@ -7,8 +7,7 @@ export class FirebaseObjectStorage {
 
         await file.save(data, {
             contentType: contentType,
-            resumable: false, // TODO
-            public: true, // TODO
+            private: true,
         });
 
         const downloadUrl = await getDownloadURL(file);

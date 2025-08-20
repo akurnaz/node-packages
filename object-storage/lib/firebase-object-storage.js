@@ -18,8 +18,7 @@ class FirebaseObjectStorage {
             const file = (0, storage_1.getStorage)().bucket().file(path);
             yield file.save(data, {
                 contentType: contentType,
-                resumable: false, // TODO
-                public: true, // TODO
+                private: true,
             });
             const downloadUrl = yield (0, storage_1.getDownloadURL)(file);
             const metadataResponse = yield file.getMetadata();
