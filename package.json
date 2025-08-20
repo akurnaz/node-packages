@@ -1,6 +1,7 @@
 {
   "workspaces": [
-    "commons", 
+    "commons",
+    "logging",
     "my-cloud-firestore",
     "payment",
     "object-storage"

@@ -26,10 +26,8 @@ export class AdaptyPaymentClient implements PaymentClient {
         };
 
         const response = await fetch("https://api.adapty.io/api/v2/server-side-api/profile/", requestOptions);
-        console.debug("Response:", response);
 
         const body = await response.json();
-        console.debug("Response body:", body);
 
         if (!response.ok) {
             this.handleError(body);
