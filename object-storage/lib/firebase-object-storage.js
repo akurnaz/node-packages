@@ -13,9 +13,12 @@ exports.FirebaseObjectStorage = void 0;
 const storage_1 = require("firebase-admin/storage");
 const object_metadata_1 = require("./object-metadata");
 class FirebaseObjectStorage {
+    constructor(bucket) {
+        this.bucket = bucket;
+    }
     put(data, path, contentType, duration) {
         return __awaiter(this, void 0, void 0, function* () {
-            const file = (0, storage_1.getStorage)().bucket().file(path);
+            const file = this.bucket.file(path);
             yield file.save(data, {
                 contentType: contentType,
                 private: true,
@@ -32,6 +35,12 @@ class FirebaseObjectStorage {
                 size: Number(fileMetadata.size),
                 duration: duration,
             });
+        });
+    }
+    delete(path) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const file = this.bucket.file(path);
+            yield file.delete();
         });
     }
 }

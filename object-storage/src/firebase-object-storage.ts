@@ -1,9 +1,16 @@
 import { getDownloadURL, getStorage } from "firebase-admin/storage";
 import { ObjectMetadata } from "./object-metadata";
+import { Bucket } from '@google-cloud/storage';
 
 export class FirebaseObjectStorage {
+    private readonly bucket: Bucket;
+
+    constructor(bucket: Bucket) {
+        this.bucket = bucket;
+    }
+
     public async put(data: Buffer, path: string, contentType: string, duration?: number): Promise<ObjectMetadata> {
-        const file = getStorage().bucket().file(path);
+        const file = this.bucket.file(path);
 
         await file.save(data, {
             contentType: contentType,
@@ -27,5 +34,11 @@ export class FirebaseObjectStorage {
                 duration: duration,
             }
         );
+    }
+
+    public async delete(path: string): Promise<void> {
+        const file = this.bucket.file(path);
+        
+        await file.delete();
     }
 }
