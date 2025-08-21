@@ -38,7 +38,7 @@ export class FirebaseObjectStorage {
 
     public async delete(path: string): Promise<void> {
         const file = this.bucket.file(path);
-        
-        await file.delete();
+
+        await file.delete({ ignoreNotFound: true });
     }
 }

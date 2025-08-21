@@ -40,7 +40,7 @@ class FirebaseObjectStorage {
     delete(path) {
         return __awaiter(this, void 0, void 0, function* () {
             const file = this.bucket.file(path);
-            yield file.delete();
+            yield file.delete({ ignoreNotFound: true });
         });
     }
 }
