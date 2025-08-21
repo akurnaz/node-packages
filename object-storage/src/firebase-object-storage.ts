@@ -1,6 +1,6 @@
-import { getDownloadURL, getStorage } from "firebase-admin/storage";
-import { ObjectMetadata } from "./object-metadata";
 import { Bucket } from '@google-cloud/storage';
+import { getDownloadURL } from "firebase-admin/storage";
+import { ObjectMetadata } from "./object-metadata";
 
 export class FirebaseObjectStorage {
     private readonly bucket: Bucket;
@@ -36,9 +36,11 @@ export class FirebaseObjectStorage {
         );
     }
 
-    public async delete(path: string): Promise<void> {
-        const file = this.bucket.file(path);
+    public async deleteFiles(prefix: string): Promise<void> {
+        if (prefix == "") {
+            return;
+        }
 
-        await file.delete({ ignoreNotFound: true });
+        return this.bucket.deleteFiles({ prefix: prefix, force: true });
     }
 }

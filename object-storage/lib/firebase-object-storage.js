@@ -37,10 +37,12 @@ class FirebaseObjectStorage {
             });
         });
     }
-    delete(path) {
+    deleteFiles(prefix) {
         return __awaiter(this, void 0, void 0, function* () {
-            const file = this.bucket.file(path);
-            yield file.delete({ ignoreNotFound: true });
+            if (prefix == "") {
+                return;
+            }
+            return this.bucket.deleteFiles({ prefix: prefix, force: true });
         });
     }
 }
