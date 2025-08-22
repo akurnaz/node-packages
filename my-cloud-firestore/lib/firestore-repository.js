@@ -153,6 +153,15 @@ class FirestoreRepository {
     }
     updateById(parentId, id, data, extras) {
         return __awaiter(this, void 0, void 0, function* () {
+            if (extras === null || extras === void 0 ? void 0 : extras.ignoreIfNotExists) {
+                if (extras.transaction != null) {
+                    throw Error('ignoreIfNotExists cannot be used with transaction');
+                }
+                const exists = yield this.existsById(parentId, id);
+                if (!exists) {
+                    return;
+                }
+            }
             const documentReference = this.getCollectionReference(parentId).doc(id);
             if (extras === null || extras === void 0 ? void 0 : extras.transaction) {
                 extras.transaction.update(documentReference, data);
