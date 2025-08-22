@@ -31,9 +31,7 @@ class AdaptyPaymentClient {
                 redirect: "follow",
             };
             const response = yield fetch("https://api.adapty.io/api/v2/server-side-api/profile/", requestOptions);
-            console.debug("Response:", response);
             const body = yield response.json();
-            console.debug("Response body:", body);
             if (!response.ok) {
                 this.handleError(body);
             }
