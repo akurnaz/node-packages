@@ -1,3 +1,4 @@
+export * from "./date";
 export * from "./delayed";
 export * from "./errors";
 export * from "./validation/array-validator";
