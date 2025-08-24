@@ -1,5 +1,8 @@
 import { CollectionReference, DocumentData, Filter, Firestore, Transaction, UpdateData, WriteBatch } from "firebase-admin/firestore";
-export declare abstract class Document {
+export interface JsonSerializable {
+    toJson(): DocumentData;
+}
+export declare abstract class Document implements JsonSerializable {
     id?: string;
     constructor(id?: string);
     abstract toJson(): DocumentData;
