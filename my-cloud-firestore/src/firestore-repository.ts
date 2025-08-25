@@ -10,11 +10,11 @@ import {
     WriteBatch,
 } from "firebase-admin/firestore";
 
-export interface JsonSerializable {
+export interface FirestoreSerializable {
     toJson(): DocumentData;
 }
 
-export abstract class Document implements JsonSerializable {
+export abstract class Document implements FirestoreSerializable {
     id?: string;
 
     constructor(id?: string) {
