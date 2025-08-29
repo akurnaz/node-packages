@@ -196,7 +196,7 @@ export abstract class FirestoreRepository<T extends Document, P extends ParentId
         id: string,
         data: UpdateData<DocumentData>,
         extras?: { transaction?: Transaction, batch?: WriteBatch, ignoreIfNotExists?: boolean }
-    ): Promise<void> {
+    ): Promise<boolean> {
         if (extras?.ignoreIfNotExists) {
             if (extras.transaction != null) {
                 throw Error('ignoreIfNotExists cannot be used with transaction');
@@ -204,7 +204,7 @@ export abstract class FirestoreRepository<T extends Document, P extends ParentId
 
             const exists = await this.existsById(parentId, id);
             if (!exists) {
-                return;
+                return false;
             }
         }
 
@@ -217,6 +217,8 @@ export abstract class FirestoreRepository<T extends Document, P extends ParentId
         } else {
             await documentReference.update(data);
         }
+
+        return true;
     }
 
     public async deleteById(
