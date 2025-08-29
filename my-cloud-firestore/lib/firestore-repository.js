@@ -159,7 +159,7 @@ class FirestoreRepository {
                 }
                 const exists = yield this.existsById(parentId, id);
                 if (!exists) {
-                    return;
+                    return false;
                 }
             }
             const documentReference = this.getCollectionReference(parentId).doc(id);
@@ -172,6 +172,7 @@ class FirestoreRepository {
             else {
                 yield documentReference.update(data);
             }
+            return true;
         });
     }
     deleteById(parentId, id, extras) {

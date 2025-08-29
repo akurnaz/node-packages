@@ -59,7 +59,7 @@ export declare abstract class FirestoreRepository<T extends Document, P extends 
         transaction?: Transaction;
         batch?: WriteBatch;
         ignoreIfNotExists?: boolean;
-    }): Promise<void>;
+    }): Promise<boolean>;
     deleteById(parentId: P, id: string, extras?: {
         transaction?: Transaction;
         batch?: WriteBatch;
