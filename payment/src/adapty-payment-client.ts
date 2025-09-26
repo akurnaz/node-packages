@@ -7,10 +7,10 @@ export class AdaptyPaymentClient implements PaymentClient {
     private readonly apiKey: string;
 
     constructor(apiKey: string) {
-        this.apiKey = apiKey;
-        if (!this.apiKey) {
+        if (!apiKey) {
             throw new Error("API key is required for AdaptyApi");
         }
+        this.apiKey = apiKey;
     }
 
     public async getProfile(customerUserId: string): Promise<Profile> {
