@@ -1,11 +1,4 @@
-import { UnauthenticatedHttpsError, NoSuchDocumentError } from '../errors';
-
-describe('UnauthenticatedHttpsError', () => {
-  it('should be instance of Error', () => {
-    const err = new UnauthenticatedHttpsError();
-    expect(err).toBeInstanceOf(Error);
-  });
-});
+import { NoSuchDocumentError } from '../errors';
 
 describe('NoSuchDocumentError', () => {
   it('should set documentCode and message', () => {

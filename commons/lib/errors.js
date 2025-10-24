@@ -1,9 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.NoSuchDocumentError = exports.UnauthenticatedHttpsError = void 0;
-class UnauthenticatedHttpsError extends Error {
-}
-exports.UnauthenticatedHttpsError = UnauthenticatedHttpsError;
+exports.NoSuchDocumentError = void 0;
 class NoSuchDocumentError extends Error {
     constructor(documentCode) {
         super(`No such document: ${documentCode}`);

@@ -1,6 +1,3 @@
-export class UnauthenticatedHttpsError extends Error {
-}
-
 export class NoSuchDocumentError extends Error {
     readonly documentCode: string;
 
