@@ -1,0 +1,37 @@
+{
+  "name": "canny",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "Ali Kurnaz",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akurnaz/node-packages.git"
+  },
+  "bugs": {
+    "url": "https://github.com/akurnaz/node-packages/issues"
+  },
+  "homepage": "https://github.com/akurnaz/node-packages/tree/main/canny#readme",
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "jest": "^30.0.5",
+    "ts-jest": "^29.4.1",
+    "typescript": "^5.9.2"
+  }
+}

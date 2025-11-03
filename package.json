@@ -1,6 +1,7 @@
 {
   "workspaces": [
     "auth",
+    "canny",
     "commons",
     "firestore",
     "logging",
