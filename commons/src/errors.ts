@@ -1,10 +1,10 @@
 export class NoSuchDocumentError extends Error {
-    readonly code: string;
+    readonly key: string;
     readonly id?: string;
 
-    public constructor(code: string, id?: string) {
+    public constructor(key: string, id?: string) {
         super();
-        this.code = code;
+        this.key = key;
         this.id = id;
     }
 }
