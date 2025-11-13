@@ -2,9 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NoSuchDocumentError = void 0;
 class NoSuchDocumentError extends Error {
-    constructor(documentCode) {
-        super(`No such document: ${documentCode}`);
-        this.documentCode = documentCode;
+    constructor(code, id) {
+        super();
+        this.code = code;
+        this.id = id;
     }
 }
 exports.NoSuchDocumentError = NoSuchDocumentError;

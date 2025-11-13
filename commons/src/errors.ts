@@ -1,8 +1,10 @@
 export class NoSuchDocumentError extends Error {
-    readonly documentCode: string;
+    readonly code: string;
+    readonly id?: string;
 
-    public constructor(documentCode: string) {
-        super(`No such document: ${documentCode}`);
-        this.documentCode = documentCode;
+    public constructor(code: string, id?: string) {
+        super();
+        this.code = code;
+        this.id = id;
     }
 }

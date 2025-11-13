@@ -1,4 +1,5 @@
 export declare class NoSuchDocumentError extends Error {
-    readonly documentCode: string;
-    constructor(documentCode: string);
+    readonly code: string;
+    readonly id?: string;
+    constructor(code: string, id?: string);
 }
