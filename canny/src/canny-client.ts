@@ -164,6 +164,11 @@ export interface Post {
     readonly status: Status;
 
     /**
+     * The number of non-deleted comments associated with this post.
+     */
+    readonly commentCount: number;
+
+    /**
      * Any custom fields associated with the post. Each field name (key) must be between 0 and 30 characters long.
      * If field values are strings, they must be less than 200 characters long.
      */
