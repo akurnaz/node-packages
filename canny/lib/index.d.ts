@@ -1,1 +1,2 @@
-export * from "./canny-client.js";
+export * from "./canny-client";
+export * from "./user";

@@ -1,3 +1,5 @@
+import { CreateOrUpdateUserRequest, CreateOrUpdateUserResponse, User } from "./user";
+
 export type SortProperty = "newest" | "oldest" | "relevance" | "score" | "statusChanged" | "trending";
 export type Response = "success";
 export type Status = "open" | "under review" | "planned" | "in progress" | "complete" | "closed";
@@ -9,88 +11,6 @@ export class CannyError extends Error {
         super(`Canny error: ${message}`);
         this.name = "CannyError";
     }
-}
-
-export interface CreateOrUpdateUserRequest {
-    /**
-     * The user's name. Must be between 1 and 50 characters.
-     */
-    readonly name: string;
-
-    /**
-     * The user's unique identifier in Canny. This can be found through the list users endpoint.
-     */
-    readonly id?: string;
-
-    /**
-     * The user's unique identifier in your application.
-     */
-    readonly userID?: string;
-
-    /**
-     * The user's email.
-     */
-    readonly email?: string;
-
-    /**
-     * The user's alias
-     */
-    readonly alias?: string;
-
-    /**
-     * The URL pointing to the user's avatar image.
-     */
-    readonly avatarURL?: string;
-
-    /**
-     * Defines the list of companies the user is associated with.
-     * To associate a user with a company, the user must have a UserID.
-     * Verify the UserID using the retrieve user endpoint.
-     *
-     * Omitting a company that the user is currently associated with will not disassociate the user from that company.
-     * To disassociate a user from a company, use the remove user from a company endpoint.
-     */
-    readonly companies?: unknown[];
-
-    /**
-     * Any custom fields associated with the user. Each field name (key) must be between 0 and 30 characters long.
-     * If field values are strings, they must be less than 200 characters long.
-     */
-    readonly customFields?: CustomFields;
-
-    /**
-     * The date the user was created in your system.
-     */
-    readonly created?: Date;
-}
-
-export interface CreateOrUpdateUserResponse {
-    /**
-     * The user's unique identifier in Canny.
-     */
-    readonly id: string;
-}
-
-export interface User {
-    /**
-     * A unique identifier for the user.
-     */
-    readonly id: string;
-
-    /**
-     * The user's unique identifier in your application.
-     */
-    readonly userID?: string;
-
-    /**
-     * The user's name.
-     */
-    readonly name: string;
-
-    /**
-     * Time at which the user was created.
-     */
-    readonly created: Date;
 }
 
 export interface Board {
