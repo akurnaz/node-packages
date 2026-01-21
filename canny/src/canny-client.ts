@@ -15,7 +15,7 @@ export class CannyError extends Error {
 }
 
 export class CannyClient {
-    private static readonly BASE_URL = "https://canny.io/api/v1";
+    private static readonly BASE_URL = "https://canny.io/api";
     private readonly headers: Headers;
     private readonly apiKey: string;
 
@@ -37,7 +37,7 @@ export class CannyClient {
             body: JSON.stringify({ apiKey: this.apiKey, ...request }),
         };
 
-        const response = await fetch(`${CannyClient.BASE_URL}/users/create_or_update`, requestOptions);
+        const response = await fetch(`${CannyClient.BASE_URL}/v1/users/create_or_update`, requestOptions);
 
         const body = await response.json();
 
@@ -48,7 +48,7 @@ export class CannyClient {
         return body;
     }
 
-    // Posts
+    // Boards
 
     public async listBoards(privateFiltered?: boolean): Promise<Board[]> {
         const requestOptions: RequestInit = {
@@ -57,7 +57,7 @@ export class CannyClient {
             body: JSON.stringify({ apiKey: this.apiKey }),
         };
 
-        const response = await fetch(`${CannyClient.BASE_URL}/boards/list`, requestOptions);
+        const response = await fetch(`${CannyClient.BASE_URL}/v1/boards/list`, requestOptions);
 
         const body = await response.json();
 
@@ -88,7 +88,7 @@ export class CannyClient {
             body: JSON.stringify({ apiKey: this.apiKey, boardID: boardId, status, limit, skip, sort }),
         };
 
-        const response = await fetch(`${CannyClient.BASE_URL}/posts/list`, requestOptions);
+        const response = await fetch(`${CannyClient.BASE_URL}/v1/posts/list`, requestOptions);
 
         const body = await response.json();
 
@@ -106,7 +106,7 @@ export class CannyClient {
             body: JSON.stringify({ apiKey: this.apiKey, id: id }),
         };
 
-        const response = await fetch(`${CannyClient.BASE_URL}/posts/retrieve`, requestOptions);
+        const response = await fetch(`${CannyClient.BASE_URL}/v1/posts/retrieve`, requestOptions);
 
         const body = await response.json();
 
@@ -124,7 +124,7 @@ export class CannyClient {
             body: JSON.stringify({ apiKey: this.apiKey, ...request }),
         };
 
-        const response = await fetch(`${CannyClient.BASE_URL}/posts/create`, requestOptions);
+        const response = await fetch(`${CannyClient.BASE_URL}/v1/posts/create`, requestOptions);
 
         const body = await response.json();
 
@@ -142,7 +142,7 @@ export class CannyClient {
             body: JSON.stringify({ apiKey: this.apiKey, postID: id }),
         };
 
-        const response = await fetch(`${CannyClient.BASE_URL}/posts/delete`, requestOptions);
+        const response = await fetch(`${CannyClient.BASE_URL}/v1/posts/delete`, requestOptions);
 
         if (!response.ok) {
             const body = await response.json();
@@ -163,7 +163,7 @@ export class CannyClient {
             body: JSON.stringify({ apiKey: this.apiKey, postID: postId, cursor, limit }),
         };
 
-        const response = await fetch(`${CannyClient.BASE_URL}/comments/list`, requestOptions);
+        const response = await fetch(`${CannyClient.BASE_URL}/v2/comments/list`, requestOptions);
 
         const body = await response.json();
 
@@ -183,7 +183,7 @@ export class CannyClient {
             body: JSON.stringify({ apiKey: this.apiKey, boardID: boardId, userID: userId, limit, skip }),
         };
 
-        const response = await fetch(`${CannyClient.BASE_URL}/votes/list`, requestOptions);
+        const response = await fetch(`${CannyClient.BASE_URL}/v2/votes/list`, requestOptions);
 
         const body = await response.json();
 
@@ -201,7 +201,7 @@ export class CannyClient {
             body: JSON.stringify({ apiKey: this.apiKey, postID: postId, voterID: voterId }),
         };
 
-        const response = await fetch(`${CannyClient.BASE_URL}/votes/create`, requestOptions);
+        const response = await fetch(`${CannyClient.BASE_URL}/v1/votes/create`, requestOptions);
 
         if (!response.ok) {
             const body = await response.json();
@@ -220,7 +220,7 @@ export class CannyClient {
             body: JSON.stringify({ apiKey: this.apiKey, postID: postId, voterID: voterId }),
         };
 
-        const response = await fetch(`${CannyClient.BASE_URL}/votes/delete`, requestOptions);
+        const response = await fetch(`${CannyClient.BASE_URL}/v1/votes/delete`, requestOptions);
 
         if (!response.ok) {
             const body = await response.json();

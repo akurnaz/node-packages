@@ -34,7 +34,7 @@ class CannyClient {
                 headers: this.headers,
                 body: JSON.stringify(Object.assign({ apiKey: this.apiKey }, request)),
             };
-            const response = yield fetch(`${CannyClient.BASE_URL}/users/create_or_update`, requestOptions);
+            const response = yield fetch(`${CannyClient.BASE_URL}/v1/users/create_or_update`, requestOptions);
             const body = yield response.json();
             if (!response.ok) {
                 throw new CannyError(body.error || response.statusText);
@@ -42,7 +42,7 @@ class CannyClient {
             return body;
         });
     }
-    // Posts
+    // Boards
     listBoards(privateFiltered) {
         return __awaiter(this, void 0, void 0, function* () {
             const requestOptions = {
@@ -50,7 +50,7 @@ class CannyClient {
                 headers: this.headers,
                 body: JSON.stringify({ apiKey: this.apiKey }),
             };
-            const response = yield fetch(`${CannyClient.BASE_URL}/boards/list`, requestOptions);
+            const response = yield fetch(`${CannyClient.BASE_URL}/v1/boards/list`, requestOptions);
             const body = yield response.json();
             if (!response.ok) {
                 throw new CannyError(body.error || response.statusText);
@@ -70,7 +70,7 @@ class CannyClient {
                 headers: this.headers,
                 body: JSON.stringify({ apiKey: this.apiKey, boardID: boardId, status, limit, skip, sort }),
             };
-            const response = yield fetch(`${CannyClient.BASE_URL}/posts/list`, requestOptions);
+            const response = yield fetch(`${CannyClient.BASE_URL}/v1/posts/list`, requestOptions);
             const body = yield response.json();
             if (!response.ok) {
                 throw new CannyError(body.error || response.statusText);
@@ -85,7 +85,7 @@ class CannyClient {
                 headers: this.headers,
                 body: JSON.stringify({ apiKey: this.apiKey, id: id }),
             };
-            const response = yield fetch(`${CannyClient.BASE_URL}/posts/retrieve`, requestOptions);
+            const response = yield fetch(`${CannyClient.BASE_URL}/v1/posts/retrieve`, requestOptions);
             const body = yield response.json();
             if (!response.ok) {
                 throw new CannyError(body.error || response.statusText);
@@ -100,7 +100,7 @@ class CannyClient {
                 headers: this.headers,
                 body: JSON.stringify(Object.assign({ apiKey: this.apiKey }, request)),
             };
-            const response = yield fetch(`${CannyClient.BASE_URL}/posts/create`, requestOptions);
+            const response = yield fetch(`${CannyClient.BASE_URL}/v1/posts/create`, requestOptions);
             const body = yield response.json();
             if (!response.ok) {
                 throw new CannyError(body.error || response.statusText);
@@ -115,7 +115,7 @@ class CannyClient {
                 headers: this.headers,
                 body: JSON.stringify({ apiKey: this.apiKey, postID: id }),
             };
-            const response = yield fetch(`${CannyClient.BASE_URL}/posts/delete`, requestOptions);
+            const response = yield fetch(`${CannyClient.BASE_URL}/v1/posts/delete`, requestOptions);
             if (!response.ok) {
                 const body = yield response.json();
                 throw new CannyError(body.error || response.statusText);
@@ -132,7 +132,7 @@ class CannyClient {
                 headers: this.headers,
                 body: JSON.stringify({ apiKey: this.apiKey, postID: postId, cursor, limit }),
             };
-            const response = yield fetch(`${CannyClient.BASE_URL}/comments/list`, requestOptions);
+            const response = yield fetch(`${CannyClient.BASE_URL}/v2/comments/list`, requestOptions);
             const body = yield response.json();
             if (!response.ok) {
                 throw new CannyError(body.error || response.statusText);
@@ -148,7 +148,7 @@ class CannyClient {
                 headers: this.headers,
                 body: JSON.stringify({ apiKey: this.apiKey, boardID: boardId, userID: userId, limit, skip }),
             };
-            const response = yield fetch(`${CannyClient.BASE_URL}/votes/list`, requestOptions);
+            const response = yield fetch(`${CannyClient.BASE_URL}/v2/votes/list`, requestOptions);
             const body = yield response.json();
             if (!response.ok) {
                 throw new CannyError(body.error || response.statusText);
@@ -163,7 +163,7 @@ class CannyClient {
                 headers: this.headers,
                 body: JSON.stringify({ apiKey: this.apiKey, postID: postId, voterID: voterId }),
             };
-            const response = yield fetch(`${CannyClient.BASE_URL}/votes/create`, requestOptions);
+            const response = yield fetch(`${CannyClient.BASE_URL}/v1/votes/create`, requestOptions);
             if (!response.ok) {
                 const body = yield response.json();
                 throw new CannyError(body.error || response.statusText);
@@ -179,7 +179,7 @@ class CannyClient {
                 headers: this.headers,
                 body: JSON.stringify({ apiKey: this.apiKey, postID: postId, voterID: voterId }),
             };
-            const response = yield fetch(`${CannyClient.BASE_URL}/votes/delete`, requestOptions);
+            const response = yield fetch(`${CannyClient.BASE_URL}/v1/votes/delete`, requestOptions);
             if (!response.ok) {
                 const body = yield response.json();
                 throw new CannyError(body.error || response.statusText);
@@ -190,4 +190,4 @@ class CannyClient {
     }
 }
 exports.CannyClient = CannyClient;
-CannyClient.BASE_URL = "https://canny.io/api/v1";
+CannyClient.BASE_URL = "https://canny.io/api";
