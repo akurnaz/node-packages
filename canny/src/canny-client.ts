@@ -1,4 +1,5 @@
 import { Board } from "./board";
+import { Comment } from "./comment";
 import { CreatePostRequest, Post, Status } from "./post";
 import { CreateOrUpdateUserRequest, CreateOrUpdateUserResponse } from "./user";
 import { Vote } from "./vote";
