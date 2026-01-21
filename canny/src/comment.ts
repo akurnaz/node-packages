@@ -26,7 +26,7 @@ export interface Comment {
     /**
      * Time at which the comment was first created.
      */
-    readonly status: Status;
+    readonly status?: Status;
 
     /**
      * Time at which the comment was first created.
