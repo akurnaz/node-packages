@@ -26,6 +26,7 @@ class CannyClient {
         this.headers = new Headers();
         this.headers.append("Content-Type", "application/json");
     }
+    // Users
     createOrUpdateUser(request) {
         return __awaiter(this, void 0, void 0, function* () {
             const requestOptions = {
@@ -41,6 +42,7 @@ class CannyClient {
             return body;
         });
     }
+    // Posts
     listBoards(privateFiltered) {
         return __awaiter(this, void 0, void 0, function* () {
             const requestOptions = {
@@ -59,6 +61,7 @@ class CannyClient {
             return body.boards;
         });
     }
+    // Posts
     listPosts(boardId, statuses, limit, skip, sort) {
         return __awaiter(this, void 0, void 0, function* () {
             const status = statuses.join(",");
@@ -121,6 +124,23 @@ class CannyClient {
             return body;
         });
     }
+    // Comments
+    listComments(postId, cursor, limit) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const requestOptions = {
+                method: "POST",
+                headers: this.headers,
+                body: JSON.stringify({ apiKey: this.apiKey, postID: postId, cursor, limit }),
+            };
+            const response = yield fetch(`${CannyClient.BASE_URL}/comments/list`, requestOptions);
+            const body = yield response.json();
+            if (!response.ok) {
+                throw new CannyError(body.error || response.statusText);
+            }
+            return body.items;
+        });
+    }
+    // Votes
     listVotes(boardId, userId, limit, skip) {
         return __awaiter(this, void 0, void 0, function* () {
             const requestOptions = {

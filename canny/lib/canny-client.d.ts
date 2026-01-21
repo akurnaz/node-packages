@@ -18,6 +18,7 @@ export declare class CannyClient {
     retrievePost(id: string): Promise<Post>;
     createPost(request: CreatePostRequest): Promise<string>;
     deletePost(id: string): Promise<Response>;
+    listComments(postId: string, cursor?: string, limit?: number): Promise<Comment[]>;
     listVotes(boardId: string, userId: string, limit?: number, skip?: number): Promise<Vote[]>;
     createVote(postId: string, voterId: string): Promise<Response>;
     deleteVote(postId: string, voterId: string): Promise<Response>;

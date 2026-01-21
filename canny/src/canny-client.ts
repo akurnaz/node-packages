@@ -27,6 +27,8 @@ export class CannyClient {
         this.headers.append("Content-Type", "application/json");
     }
 
+    // Users
+
     public async createOrUpdateUser(request: CreateOrUpdateUserRequest): Promise<CreateOrUpdateUserResponse> {
         const requestOptions: RequestInit = {
             method: "POST",
@@ -44,6 +46,8 @@ export class CannyClient {
 
         return body;
     }
+
+    // Posts
 
     public async listBoards(privateFiltered?: boolean): Promise<Board[]> {
         const requestOptions: RequestInit = {
@@ -66,6 +70,8 @@ export class CannyClient {
 
         return body.boards;
     }
+
+    // Posts
 
     public async listPosts(
         boardId: string,
@@ -146,6 +152,28 @@ export class CannyClient {
 
         return body as Response;
     }
+
+    // Comments
+
+    public async listComments(postId: string, cursor?: string, limit?: number): Promise<Comment[]> {
+        const requestOptions: RequestInit = {
+            method: "POST",
+            headers: this.headers,
+            body: JSON.stringify({ apiKey: this.apiKey, postID: postId, cursor, limit }),
+        };
+
+        const response = await fetch(`${CannyClient.BASE_URL}/comments/list`, requestOptions);
+
+        const body = await response.json();
+
+        if (!response.ok) {
+            throw new CannyError(body.error || response.statusText);
+        }
+
+        return body.items;
+    }
+
+    // Votes
 
     public async listVotes(boardId: string, userId: string, limit?: number, skip?: number): Promise<Vote[]> {
         const requestOptions: RequestInit = {
