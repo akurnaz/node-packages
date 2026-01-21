@@ -183,7 +183,7 @@ export class CannyClient {
             body: JSON.stringify({ apiKey: this.apiKey, boardID: boardId, userID: userId, limit, skip }),
         };
 
-        const response = await fetch(`${CannyClient.BASE_URL}/v2/votes/list`, requestOptions);
+        const response = await fetch(`${CannyClient.BASE_URL}/v1/votes/list`, requestOptions);
 
         const body = await response.json();
 

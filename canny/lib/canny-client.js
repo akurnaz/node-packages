@@ -148,7 +148,7 @@ class CannyClient {
                 headers: this.headers,
                 body: JSON.stringify({ apiKey: this.apiKey, boardID: boardId, userID: userId, limit, skip }),
             };
-            const response = yield fetch(`${CannyClient.BASE_URL}/v2/votes/list`, requestOptions);
+            const response = yield fetch(`${CannyClient.BASE_URL}/v1/votes/list`, requestOptions);
             const body = yield response.json();
             if (!response.ok) {
                 throw new CannyError(body.error || response.statusText);
