@@ -27,3 +27,5 @@ __exportStar(require("./validation/string-validator"), exports);
 __exportStar(require("./validation/validator"), exports);
 __exportStar(require("./very/order"), exports);
 __exportStar(require("./very/pageable"), exports);
+__exportStar(require("./very/scrolling/scroll_position"), exports);
+__exportStar(require("./very/scrolling/window"), exports);

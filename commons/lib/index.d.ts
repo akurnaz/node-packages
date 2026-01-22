@@ -11,3 +11,5 @@ export * from "./validation/string-validator";
 export * from "./validation/validator";
 export * from "./very/order";
 export * from "./very/pageable";
+export * from "./very/scrolling/scroll_position";
+export * from "./very/scrolling/window";
