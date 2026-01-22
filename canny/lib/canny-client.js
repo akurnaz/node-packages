@@ -137,7 +137,7 @@ class CannyClient {
             if (!response.ok) {
                 throw new CannyError(body.error || response.statusText);
             }
-            return body.items;
+            return body;
         });
     }
     // Votes

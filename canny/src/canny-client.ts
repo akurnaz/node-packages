@@ -156,7 +156,7 @@ export class CannyClient {
 
     // Comments
 
-    public async listComments(postId: string, cursor?: string, limit?: number): Promise<Comment[]> {
+    public async listComments(postId: string, cursor?: string, limit?: number): Promise<{ items: Comment[], cursor?: string, hasNextPage: boolean }> {
         const requestOptions: RequestInit = {
             method: "POST",
             headers: this.headers,
@@ -171,7 +171,7 @@ export class CannyClient {
             throw new CannyError(body.error || response.statusText);
         }
 
-        return body.items;
+        return body;
     }
 
     // Votes
