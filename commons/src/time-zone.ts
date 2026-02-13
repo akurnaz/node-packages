@@ -4,7 +4,7 @@ export class TimeZone {
     readonly name: string;
 
     /**
-     * UTC offset in minutes.
+     * UTC offset in seconds.
      */
     readonly offset: number;
 

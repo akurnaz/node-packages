@@ -9,6 +9,7 @@ import {
     UpdateData,
     WriteBatch,
 } from "firebase-admin/firestore";
+import { Direction, Sort } from "../../commons";
 
 export interface FirestoreSerializable {
     toJson(): DocumentData;
@@ -292,7 +293,7 @@ export abstract class FirestoreRepository<T extends Document, P extends ParentId
     private sort(query: Query<T>, sort?: Sort): Query<T> {
         if (sort) {
             for (const order of sort.orders) {
-                query = query.orderBy(order.property, order.direction === Direction.asc ? "asc" : "desc");
+                query = query.orderBy(order.property, order.direction === Direction.ASC ? "asc" : "desc");
             }
         }
 
@@ -305,37 +306,5 @@ export abstract class FirestoreRepository<T extends Document, P extends ParentId
         }
 
         return query;
-    }
-}
-
-export enum Direction { asc, desc }
-
-export class Order {
-    readonly property: string;
-    readonly direction: Direction;
-
-    private constructor(property: string, direction: Direction) {
-        this.property = property;
-        this.direction = direction;
-    }
-
-    public static asc(property: string): Order {
-        return new Order(property, Direction.asc);
-    }
-
-    public static desc(property: string): Order {
-        return new Order(property, Direction.desc);
-    }
-}
-
-export class Sort {
-    readonly orders: Order[];
-
-    private constructor(orders: Order[]) {
-        this.orders = orders;
-    }
-
-    public static by(orders: Order[]) {
-        return new Sort(orders);
     }
 }
