@@ -1,4 +1,5 @@
 import { CollectionReference, DocumentData, Filter, Firestore, Transaction, UpdateData, WriteBatch } from "firebase-admin/firestore";
+import { Sort } from "../../commons";
 export interface FirestoreSerializable {
     toJson(): DocumentData;
 }
@@ -83,21 +84,5 @@ export declare abstract class FirestoreRepository<T extends Document, P extends 
     private filter;
     private sort;
     private limit;
-}
-export declare enum Direction {
-    asc = 0,
-    desc = 1
-}
-export declare class Order {
-    readonly property: string;
-    readonly direction: Direction;
-    private constructor();
-    static asc(property: string): Order;
-    static desc(property: string): Order;
-}
-export declare class Sort {
-    readonly orders: Order[];
-    private constructor();
-    static by(orders: Order[]): Sort;
 }
 export {};

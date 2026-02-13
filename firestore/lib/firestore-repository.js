@@ -9,8 +9,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Sort = exports.Order = exports.Direction = exports.FirestoreRepository = exports.ParentId = exports.Document = void 0;
+exports.FirestoreRepository = exports.ParentId = exports.Document = void 0;
 const firestore_1 = require("firebase-admin/firestore");
+const commons_1 = require("../../commons");
 class Document {
     constructor(id) {
         this.id = id;
@@ -223,7 +224,7 @@ class FirestoreRepository {
     sort(query, sort) {
         if (sort) {
             for (const order of sort.orders) {
-                query = query.orderBy(order.property, order.direction === Direction.asc ? "asc" : "desc");
+                query = query.orderBy(order.property, order.direction === commons_1.Direction.ASC ? "asc" : "desc");
             }
         }
         return query;
@@ -236,30 +237,3 @@ class FirestoreRepository {
     }
 }
 exports.FirestoreRepository = FirestoreRepository;
-var Direction;
-(function (Direction) {
-    Direction[Direction["asc"] = 0] = "asc";
-    Direction[Direction["desc"] = 1] = "desc";
-})(Direction || (exports.Direction = Direction = {}));
-class Order {
-    constructor(property, direction) {
-        this.property = property;
-        this.direction = direction;
-    }
-    static asc(property) {
-        return new Order(property, Direction.asc);
-    }
-    static desc(property) {
-        return new Order(property, Direction.desc);
-    }
-}
-exports.Order = Order;
-class Sort {
-    constructor(orders) {
-        this.orders = orders;
-    }
-    static by(orders) {
-        return new Sort(orders);
-    }
-}
-exports.Sort = Sort;
