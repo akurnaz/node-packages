@@ -2,7 +2,7 @@ import { DocumentData } from "firebase-admin/firestore";
 export declare class TimeZone {
     readonly name: string;
     /**
-     * UTC offset in minutes.
+     * UTC offset in seconds.
      */
     readonly offset: number;
     constructor(props: {

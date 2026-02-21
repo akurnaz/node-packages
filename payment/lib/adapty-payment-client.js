@@ -14,10 +14,10 @@ const errors_1 = require("./errors");
 const payment_client_1 = require("./payment-client");
 class AdaptyPaymentClient {
     constructor(apiKey) {
-        this.apiKey = apiKey;
-        if (!this.apiKey) {
+        if (!apiKey) {
             throw new Error("API key is required for AdaptyApi");
         }
+        this.apiKey = apiKey;
     }
     getProfile(customerUserId) {
         return __awaiter(this, void 0, void 0, function* () {
